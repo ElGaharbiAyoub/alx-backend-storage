@@ -19,9 +19,10 @@ if __name__ == "__main__":
     ))
     print("IPs:")
     ips = nginx_logs.aggregate([
-        {"$group": {"ip": "$ip", "count": {"$sum": 1}}},
+        {"$group": {"_id": "$ip", "count": {"$sum": 1}}},
         {"$sort": {"count": -1}},
         {"$limit": 10}
     ])
     for ip in ips:
-        print("\t{}: {}".format(ip.get("_ip"), ip.get("count")))
+        print("\t{}: {}".format(ip.get("_id"), ip.get("count")))
+        
