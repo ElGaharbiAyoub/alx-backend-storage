@@ -1,1 +1,4 @@
-#!/usr/bin/env bash
+// script that adds a new attribute to a document in the collection school
+// The script should update only document with name="Holberton school"
+// The update should add the attribute address with the value “972 Mission street”
+db.school.update({name:"Holberton school"},{$set:{address:"972 Mission street"}},{multi:true})
