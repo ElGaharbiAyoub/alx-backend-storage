@@ -68,12 +68,26 @@
 # =====task 4 - Retrieving lists =========
 
 
+# """ Main file """
+
+# Cache = __import__('exercise').Cache
+# replay = __import__('exercise').replay
+# cache = Cache()
+# cache.store("foo")
+# cache.store("bar")
+# cache.store(42)
+# replay(cache.store)
+
+# =====task 5 - Implementing an expiring web cache and tracker =========    
+
 """ Main file """
 
-Cache = __import__('exercise').Cache
-replay = __import__('exercise').replay
-cache = Cache()
-cache.store("foo")
-cache.store("bar")
-cache.store(42)
-replay(cache.store)
+get_page = __import__('web').get_page
+# Test URLs
+url1 = "http://slowwly.robertomurray.co.uk"
+url2 = "http://slowwly.robertomurray.co.uk"
+
+# Test the get_page function with slow responses
+print(get_page(url1))
+print(get_page(url1))
+print(get_page(url2))
