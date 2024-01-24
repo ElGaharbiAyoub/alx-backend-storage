@@ -14,14 +14,12 @@ def count_requests(method: Callable) -> Callable:
     @wraps(method)
     def wrapper(url):
         """ wrapper function """
-        cached_html = r.get(f"cached:{url}")
+        cached_html = r.get("cached:{}".format(url))
         if cached_html:
             return cached_html.decode('utf-8')
         html = method(url)
-        r.incr(f"count:{url}")
-        # r.setex(f"cached:{url}", 10, html)
-        r.set(f"cached:{url}", html)
-        r.expire(f"cached:{url}", 10)
+        r.incr("count:{}".format(url))
+        r.setex("cached:{}".format(url), 10, html)
         return html
     return wrapper
 
